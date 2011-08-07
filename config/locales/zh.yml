@@ -1,0 +1,12 @@
+zh:
+  layout:
+    title:  "我的书店"
+    side:   
+      home:   "首页"
+      question: "提问"
+      news:     "新闻"
+      contact:  "联系我们"
+  Button:
+    checkout: "结帐"
+    empty_cart: "清空购物车"
+    add_to_cart: "加入到购物车"

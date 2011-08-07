@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: this is one
+  description: this is desc
+  image_url: this is image_url
+  price: 0
+
+two:
+  title: this is two
+  description: this is desc
+  image_url: this is image_url
+  price: -1
+
+three:
+  title: this is 3
+  description: this is desc
+  image_url: this is image_url
+  price: 1

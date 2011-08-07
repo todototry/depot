@@ -1,0 +1,994 @@
+Request-log-analyzer, by Willem van Bergen and Bart ten Brinke - version 1.11.0
+Website: http://railsdoctors.com
+
+                                                                               development.log:           0% [                                ] ETA:  --:--:--development.log:           1% [                                ] ETA:  00:00:13development.log:           4% [=                               ] ETA:  00:00:06development.log:           5% [=                               ] ETA:  00:00:05development.log:           7% [==                              ] ETA:  00:00:04development.log:           8% [==                              ] ETA:  00:00:04development.log:           9% [==                              ] ETA:  00:00:04development.log:          12% [===                             ] ETA:  00:00:03development.log:          13% [====                            ] ETA:  00:00:03development.log:          15% [====                            ] ETA:  00:00:03development.log:          17% [=====                           ] ETA:  00:00:03development.log:          20% [======                          ] ETA:  00:00:02development.log:          21% [======                          ] ETA:  00:00:02development.log:          23% [=======                         ] ETA:  00:00:02development.log:          24% [=======                         ] ETA:  00:00:02development.log:          26% [========                        ] ETA:  00:00:02development.log:          27% [========                        ] ETA:  00:00:02development.log:          29% [=========                       ] ETA:  00:00:02development.log:          30% [=========                       ] ETA:  00:00:02development.log:          32% [==========                      ] ETA:  00:00:02development.log:          33% [==========                      ] ETA:  00:00:02development.log:          35% [===========                     ] ETA:  00:00:02development.log:          36% [===========                     ] ETA:  00:00:02development.log:          37% [===========                     ] ETA:  00:00:02development.log:          39% [============                    ] ETA:  00:00:02development.log:          41% [=============                   ] ETA:  00:00:01development.log:          42% [=============                   ] ETA:  00:00:01development.log:          44% [==============                  ] ETA:  00:00:01development.log:          46% [==============                  ] ETA:  00:00:01development.log:          48% [===============                 ] ETA:  00:00:01development.log:          51% [================                ] ETA:  00:00:01development.log:          54% [=================               ] ETA:  00:00:01development.log:          56% [=================               ] ETA:  00:00:01development.log:          58% [==================              ] ETA:  00:00:01development.log:          59% [==================              ] ETA:  00:00:01development.log:          61% [===================             ] ETA:  00:00:01development.log:          63% [====================            ] ETA:  00:00:01development.log:          65% [====================            ] ETA:  00:00:01development.log:          67% [=====================           ] ETA:  00:00:01development.log:          69% [======================          ] ETA:  00:00:00development.log:          71% [======================          ] ETA:  00:00:00development.log:          72% [=======================         ] ETA:  00:00:00development.log:          74% [=======================         ] ETA:  00:00:00development.log:          76% [========================        ] ETA:  00:00:00development.log:          78% [========================        ] ETA:  00:00:00development.log:          80% [=========================       ] ETA:  00:00:00development.log:          82% [==========================      ] ETA:  00:00:00development.log:          83% [==========================      ] ETA:  00:00:00development.log:          85% [===========================     ] ETA:  00:00:00development.log:          87% [===========================     ] ETA:  00:00:00development.log:          89% [============================    ] ETA:  00:00:00development.log:          91% [=============================   ] ETA:  00:00:00development.log:          92% [=============================   ] ETA:  00:00:00development.log:          94% [==============================  ] ETA:  00:00:00development.log:          95% [==============================  ] ETA:  00:00:00development.log:          97% [=============================== ] ETA:  00:00:00development.log:          98% [=============================== ] ETA:  00:00:00development.log:         100% [================================] Time: 00:00:03
+<html><head><title>Request-log-analyzer report</title><style type="text/css">
+        body {
+        	font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        	color: #4f6b72;
+        	background: #E6EAE9;
+        	padding-left:20px;
+        	padding-top:20px;
+        	padding-bottom:20px;
+        }
+
+        a {
+        	color: #c75f3e;
+        }
+
+        .color_bar {
+          border: 1px solid;
+          height:10px;
+        	background: #CAE8EA;
+        }
+
+        #mytable {
+        	width: 700px;
+        	padding: 0;
+        	margin: 0;
+        	padding-bottom:10px;
+        }
+
+        caption {
+        	padding: 0 0 5px 0;
+        	width: 700px;	
+        	font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        	text-align: right;
+        }
+
+        th {
+        	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        	color: #4f6b72;
+        	border-right: 1px solid #C1DAD7;
+        	border-bottom: 1px solid #C1DAD7;
+        	border-top: 1px solid #C1DAD7;
+        	letter-spacing: 2px;
+        	text-transform: uppercase;
+        	text-align: left;
+        	padding: 6px 6px 6px 12px;
+        	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+        }
+
+        td {
+        	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        	border-right: 1px solid #C1DAD7;
+        	border-bottom: 1px solid #C1DAD7;
+        	background: #fff;
+        	padding: 6px 6px 6px 12px;
+        	color: #4f6b72;
+        }
+
+        td.alt {
+        	background: #F5FAFA;
+        	color: #797268;
+        }
+        </style></head><body><h1>Request-log-analyzer summary report</h1><p>Version 1.11.0 - written by Willem van Bergen and Bart ten Brinke</p><h2>Request summary</h2>
+<table cellspacing="0" id="mytable"><tr><td class="alt">Parsed lines:</td>
+<td class="alt">4061</td></tr><tr><td>Skipped lines:</td>
+<td>82</td></tr><tr><td class="alt">Parsed requests:</td>
+<td class="alt">1294</td></tr><tr><td>Skipped requests:</td>
+<td>0</td></tr><tr><td class="alt">Warnings:</td>
+<td class="alt">no_current_request: 82</td></tr></table>
+<table cellspacing="0" id="mytable"><tr><td class="alt">First request:</td>
+<td class="alt">2011-08-02 13:40:01</td></tr><tr><td>Last request:</td>
+<td>2011-08-04 16:47:04</td></tr><tr><td class="alt">Total time analyzed:</td>
+<td class="alt">3 days</td></tr></table><h2>Request distribution per hour</h2>
+<table cellspacing="0" id="mytable"><tr><td class="alt">  0:00</td>
+<td class="alt">11 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:3px;"/></td></tr><tr><td>  1:00</td>
+<td>0 hits/day</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt">  2:00</td>
+<td class="alt">0 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td>  3:00</td>
+<td>0 hits/day</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt">  4:00</td>
+<td class="alt">0 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td>  5:00</td>
+<td>0 hits/day</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt">  6:00</td>
+<td class="alt">0 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td>  7:00</td>
+<td>0 hits/day</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt">  8:00</td>
+<td class="alt">0 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td>  9:00</td>
+<td>0 hits/day</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt"> 10:00</td>
+<td class="alt">71 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:23px;"/></td></tr><tr><td> 11:00</td>
+<td>45 hits/day</td>
+<td><div class='color_bar' style="width:14px;"/></td></tr><tr><td class="alt"> 12:00</td>
+<td class="alt">0 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td> 13:00</td>
+<td>24 hits/day</td>
+<td><div class='color_bar' style="width:7px;"/></td></tr><tr><td class="alt"> 14:00</td>
+<td class="alt">14 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:4px;"/></td></tr><tr><td> 15:00</td>
+<td>67 hits/day</td>
+<td><div class='color_bar' style="width:21px;"/></td></tr><tr><td class="alt"> 16:00</td>
+<td class="alt">99 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:32px;"/></td></tr><tr><td> 17:00</td>
+<td>29 hits/day</td>
+<td><div class='color_bar' style="width:9px;"/></td></tr><tr><td class="alt"> 18:00</td>
+<td class="alt">30 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:9px;"/></td></tr><tr><td> 19:00</td>
+<td>29 hits/day</td>
+<td><div class='color_bar' style="width:9px;"/></td></tr><tr><td class="alt"> 20:00</td>
+<td class="alt">59 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:19px;"/></td></tr><tr><td> 21:00</td>
+<td>7 hits/day</td>
+<td><div class='color_bar' style="width:2px;"/></td></tr><tr><td class="alt"> 22:00</td>
+<td class="alt">23 hits/day</td>
+<td class="alt"><div class='color_bar' style="width:7px;"/></td></tr><tr><td> 23:00</td>
+<td>108 hits/day</td>
+<td><div class='color_bar' style="width:35px;"/></td></tr></table><h2>Most requested</h2>
+<table cellspacing="0" id="mytable"><tr><td class="alt">#.</td>
+<td class="alt">493 hits</td>
+<td class="alt">38.1%</td>
+<td class="alt"><div class='color_bar' style="width:76px;"/></td></tr><tr><td>StoreController#add_to_cart.JS</td>
+<td>255 hits</td>
+<td>19.7%</td>
+<td><div class='color_bar' style="width:39px;"/></td></tr><tr><td class="alt">StoreController#index.HTML</td>
+<td class="alt">231 hits</td>
+<td class="alt">17.9%</td>
+<td class="alt"><div class='color_bar' style="width:35px;"/></td></tr><tr><td>StoreController#add_to_cart.HTML</td>
+<td>145 hits</td>
+<td>11.2%</td>
+<td><div class='color_bar' style="width:22px;"/></td></tr><tr><td class="alt">AdminController#login.HTML</td>
+<td class="alt">28 hits</td>
+<td class="alt">2.2%</td>
+<td class="alt"><div class='color_bar' style="width:4px;"/></td></tr><tr><td>InfoController#who_bought.HTML</td>
+<td>26 hits</td>
+<td>2.0%</td>
+<td><div class='color_bar' style="width:4px;"/></td></tr><tr><td class="alt">ProductsController#index.HTML</td>
+<td class="alt">18 hits</td>
+<td class="alt">1.4%</td>
+<td class="alt"><div class='color_bar' style="width:2px;"/></td></tr><tr><td>ProductsController#create.HTML</td>
+<td>14 hits</td>
+<td>1.1%</td>
+<td><div class='color_bar' style="width:2px;"/></td></tr><tr><td class="alt">ProductsController#new.HTML</td>
+<td class="alt">13 hits</td>
+<td class="alt">1.0%</td>
+<td class="alt"><div class='color_bar' style="width:2px;"/></td></tr><tr><td>ProductsController#show.HTML</td>
+<td>12 hits</td>
+<td>0.9%</td>
+<td><div class='color_bar' style="width:1px;"/></td></tr><tr><td class="alt">StoreController#checkout.HTML</td>
+<td class="alt">11 hits</td>
+<td class="alt">0.9%</td>
+<td class="alt"><div class='color_bar' style="width:1px;"/></td></tr><tr><td>StoreController#save_order.HTML</td>
+<td>11 hits</td>
+<td>0.9%</td>
+<td><div class='color_bar' style="width:1px;"/></td></tr><tr><td class="alt">ProductsController#update.HTML</td>
+<td class="alt">8 hits</td>
+<td class="alt">0.6%</td>
+<td class="alt"><div class='color_bar' style="width:1px;"/></td></tr><tr><td>ProductsController#edit.HTML</td>
+<td>7 hits</td>
+<td>0.5%</td>
+<td><div class='color_bar' style="width:1px;"/></td></tr><tr><td class="alt">StoreController#empty_cart.HTML</td>
+<td class="alt">6 hits</td>
+<td class="alt">0.5%</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td>UsersController#new.HTML</td>
+<td>5 hits</td>
+<td>0.4%</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt">UsersController#index.HTML</td>
+<td class="alt">4 hits</td>
+<td class="alt">0.3%</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td>Rails::InfoController#properties.</td>
+<td>4 hits</td>
+<td>0.3%</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt">UsersController#show.HTML</td>
+<td class="alt">1 hits</td>
+<td class="alt">0.1%</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr><tr><td>UsersController#create.HTML</td>
+<td>1 hits</td>
+<td>0.1%</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr></table><h2>HTTP methods</h2>
+<table cellspacing="0" id="mytable"><tr><td class="alt">GET</td>
+<td class="alt">783 hits</td>
+<td class="alt">60.5%</td>
+<td class="alt"><div class='color_bar' style="width:121px;"/></td></tr><tr><td>POST</td>
+<td>511 hits</td>
+<td>39.5%</td>
+<td><div class='color_bar' style="width:78px;"/></td></tr></table><h2>HTTP statuses returned</h2>
+<table cellspacing="0" id="mytable"><tr><td class="alt">200</td>
+<td class="alt">563 hits</td>
+<td class="alt">70.3%</td>
+<td class="alt"><div class='color_bar' style="width:140px;"/></td></tr><tr><td>302</td>
+<td>138 hits</td>
+<td>17.2%</td>
+<td><div class='color_bar' style="width:34px;"/></td></tr><tr><td class="alt">500</td>
+<td class="alt">96 hits</td>
+<td class="alt">12.0%</td>
+<td class="alt"><div class='color_bar' style="width:23px;"/></td></tr><tr><td>406</td>
+<td>3 hits</td>
+<td>0.4%</td>
+<td><div class='color_bar' style="width:0px;"/></td></tr><tr><td class="alt">404</td>
+<td class="alt">1 hits</td>
+<td class="alt">0.1%</td>
+<td class="alt"><div class='color_bar' style="width:0px;"/></td></tr></table><br/>
+<table cellspacing="0" id="mytable"><tr><th>Request duration - by sum</th>
+<th>Hits</th>
+<th>Sum</th>
+<th>Mean</th>
+<th>StdDev</th>
+<th>Min</th>
+<th>Max</th>
+<th>95 %tile</th></tr><tr><td class="alt">StoreController#add_to_cart.JS</td>
+<td class="alt">255</td>
+<td class="alt">21.27s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.64s</td>
+<td class="alt">0.03s-0.24s</td></tr><tr><td>StoreController#index.HTML</td>
+<td>231</td>
+<td>19.59s</td>
+<td>0.08s</td>
+<td>0.09s</td>
+<td>0.02s</td>
+<td>1.07s</td>
+<td>0.03s-0.24s</td></tr><tr><td class="alt">StoreController#add_to_cart.HTML</td>
+<td class="alt">145</td>
+<td class="alt">6.14s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.30s</td>
+<td class="alt">0.01s-0.17s</td></tr><tr><td>StoreController#save_order.HTML</td>
+<td>11</td>
+<td>3.08s</td>
+<td>0.28s</td>
+<td>0.18s</td>
+<td>0.05s</td>
+<td>0.67s</td>
+<td>0.05s-0.67s</td></tr><tr><td class="alt">ProductsController#index.HTML</td>
+<td class="alt">18</td>
+<td class="alt">2.00s</td>
+<td class="alt">0.11s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.33s</td>
+<td class="alt">0.02s-0.33s</td></tr><tr><td>ProductsController#new.HTML</td>
+<td>13</td>
+<td>1.66s</td>
+<td>0.13s</td>
+<td>0.11s</td>
+<td>0.03s</td>
+<td>0.34s</td>
+<td>0.03s-0.34s</td></tr><tr><td class="alt">AdminController#login.HTML</td>
+<td class="alt">28</td>
+<td class="alt">1.65s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.16s</td>
+<td class="alt">0.01s-0.17s</td></tr><tr><td>InfoController#who_bought.HTML</td>
+<td>26</td>
+<td>1.49s</td>
+<td>0.06s</td>
+<td>0.06s</td>
+<td>0.02s</td>
+<td>0.28s</td>
+<td>0.02s-0.28s</td></tr><tr><td class="alt">StoreController#checkout.HTML</td>
+<td class="alt">11</td>
+<td class="alt">1.19s</td>
+<td class="alt">0.11s</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.34s</td>
+<td class="alt">0.00s-0.34s</td></tr><tr><td>ProductsController#create.HTML</td>
+<td>14</td>
+<td>1.14s</td>
+<td>0.08s</td>
+<td>0.06s</td>
+<td>0.02s</td>
+<td>0.21s</td>
+<td>0.02s-0.21s</td></tr><tr><td class="alt">ProductsController#show.HTML</td>
+<td class="alt">12</td>
+<td class="alt">1.03s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.32s</td>
+<td class="alt">0.03s-0.32s</td></tr><tr><td>ProductsController#update.HTML</td>
+<td>8</td>
+<td>0.93s</td>
+<td>0.12s</td>
+<td>0.08s</td>
+<td>0.06s</td>
+<td>0.30s</td>
+<td>0.06s-0.30s</td></tr><tr><td class="alt">ProductsController#edit.HTML</td>
+<td class="alt">7</td>
+<td class="alt">0.90s</td>
+<td class="alt">0.13s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.29s</td>
+<td class="alt">0.08s-0.29s</td></tr><tr><td>UsersController#new.HTML</td>
+<td>5</td>
+<td>0.32s</td>
+<td>0.06s</td>
+<td>0.06s</td>
+<td>0.02s</td>
+<td>0.16s</td>
+<td>0.02s-0.16s</td></tr><tr><td class="alt">UsersController#index.HTML</td>
+<td class="alt">4</td>
+<td class="alt">0.30s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.15s</td>
+<td class="alt">0.03s-0.15s</td></tr><tr><td>UsersController#create.HTML</td>
+<td>1</td>
+<td>0.23s</td>
+<td>0.23s</td>
+<td>0.00s</td>
+<td>0.23s</td>
+<td>0.23s</td>
+<td>0.22s-0.23s</td></tr><tr><td class="alt">InfoController#who_bought.XML</td>
+<td class="alt">1</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.22s-0.23s</td></tr><tr><td>Rails::InfoController#properties.</td>
+<td>4</td>
+<td>0.08s</td>
+<td>0.02s</td>
+<td>0.03s</td>
+<td>0.00s</td>
+<td>0.07s</td>
+<td>0.00s-0.07s</td></tr><tr><td class="alt">UsersController#show.HTML</td>
+<td class="alt">1</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.05s-0.05s</td></tr><tr><td>StoreController#empty_cart.HTML</td>
+<td>6</td>
+<td>0.03s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr></table><br/>
+<table cellspacing="0" id="mytable"><tr><th>Request duration - by mean</th>
+<th>Hits</th>
+<th>Sum</th>
+<th>Mean</th>
+<th>StdDev</th>
+<th>Min</th>
+<th>Max</th>
+<th>95 %tile</th></tr><tr><td class="alt">StoreController#save_order.HTML</td>
+<td class="alt">11</td>
+<td class="alt">3.08s</td>
+<td class="alt">0.28s</td>
+<td class="alt">0.18s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.67s</td>
+<td class="alt">0.05s-0.67s</td></tr><tr><td>UsersController#create.HTML</td>
+<td>1</td>
+<td>0.23s</td>
+<td>0.23s</td>
+<td>0.00s</td>
+<td>0.23s</td>
+<td>0.23s</td>
+<td>0.22s-0.23s</td></tr><tr><td class="alt">InfoController#who_bought.XML</td>
+<td class="alt">1</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.22s</td>
+<td class="alt">0.22s-0.23s</td></tr><tr><td>ProductsController#edit.HTML</td>
+<td>7</td>
+<td>0.90s</td>
+<td>0.13s</td>
+<td>0.07s</td>
+<td>0.08s</td>
+<td>0.29s</td>
+<td>0.08s-0.29s</td></tr><tr><td class="alt">ProductsController#new.HTML</td>
+<td class="alt">13</td>
+<td class="alt">1.66s</td>
+<td class="alt">0.13s</td>
+<td class="alt">0.11s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.34s</td>
+<td class="alt">0.03s-0.34s</td></tr><tr><td>ProductsController#update.HTML</td>
+<td>8</td>
+<td>0.93s</td>
+<td>0.12s</td>
+<td>0.08s</td>
+<td>0.06s</td>
+<td>0.30s</td>
+<td>0.06s-0.30s</td></tr><tr><td class="alt">ProductsController#index.HTML</td>
+<td class="alt">18</td>
+<td class="alt">2.00s</td>
+<td class="alt">0.11s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.33s</td>
+<td class="alt">0.02s-0.33s</td></tr><tr><td>StoreController#checkout.HTML</td>
+<td>11</td>
+<td>1.19s</td>
+<td>0.11s</td>
+<td>0.10s</td>
+<td>0.00s</td>
+<td>0.34s</td>
+<td>0.00s-0.34s</td></tr><tr><td class="alt">ProductsController#show.HTML</td>
+<td class="alt">12</td>
+<td class="alt">1.03s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.32s</td>
+<td class="alt">0.03s-0.32s</td></tr><tr><td>StoreController#index.HTML</td>
+<td>231</td>
+<td>19.59s</td>
+<td>0.08s</td>
+<td>0.09s</td>
+<td>0.02s</td>
+<td>1.07s</td>
+<td>0.03s-0.24s</td></tr><tr><td class="alt">StoreController#add_to_cart.JS</td>
+<td class="alt">255</td>
+<td class="alt">21.27s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.64s</td>
+<td class="alt">0.03s-0.24s</td></tr><tr><td>ProductsController#create.HTML</td>
+<td>14</td>
+<td>1.14s</td>
+<td>0.08s</td>
+<td>0.06s</td>
+<td>0.02s</td>
+<td>0.21s</td>
+<td>0.02s-0.21s</td></tr><tr><td class="alt">UsersController#index.HTML</td>
+<td class="alt">4</td>
+<td class="alt">0.30s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.15s</td>
+<td class="alt">0.03s-0.15s</td></tr><tr><td>UsersController#new.HTML</td>
+<td>5</td>
+<td>0.32s</td>
+<td>0.06s</td>
+<td>0.06s</td>
+<td>0.02s</td>
+<td>0.16s</td>
+<td>0.02s-0.16s</td></tr><tr><td class="alt">AdminController#login.HTML</td>
+<td class="alt">28</td>
+<td class="alt">1.65s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.16s</td>
+<td class="alt">0.01s-0.17s</td></tr><tr><td>InfoController#who_bought.HTML</td>
+<td>26</td>
+<td>1.49s</td>
+<td>0.06s</td>
+<td>0.06s</td>
+<td>0.02s</td>
+<td>0.28s</td>
+<td>0.02s-0.28s</td></tr><tr><td class="alt">UsersController#show.HTML</td>
+<td class="alt">1</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.05s-0.05s</td></tr><tr><td>StoreController#add_to_cart.HTML</td>
+<td>145</td>
+<td>6.14s</td>
+<td>0.04s</td>
+<td>0.04s</td>
+<td>0.00s</td>
+<td>0.30s</td>
+<td>0.01s-0.17s</td></tr><tr><td class="alt">Rails::InfoController#properties.</td>
+<td class="alt">4</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.00s-0.07s</td></tr><tr><td>StoreController#empty_cart.HTML</td>
+<td>6</td>
+<td>0.03s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr></table><br/>
+<table cellspacing="0" id="mytable"><tr><th>View rendering time - by sum</th>
+<th>Hits</th>
+<th>Sum</th>
+<th>Mean</th>
+<th>StdDev</th>
+<th>Min</th>
+<th>Max</th>
+<th>95 %tile</th></tr><tr><td class="alt">StoreController#index.HTML</td>
+<td class="alt">204</td>
+<td class="alt">14.05s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.45s</td>
+<td class="alt">0.02s-0.24s</td></tr><tr><td>StoreController#add_to_cart.JS</td>
+<td>240</td>
+<td>12.38s</td>
+<td>0.05s</td>
+<td>0.04s</td>
+<td>0.02s</td>
+<td>0.44s</td>
+<td>0.02s-0.17s</td></tr><tr><td class="alt">ProductsController#new.HTML</td>
+<td class="alt">13</td>
+<td class="alt">1.13s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.31s</td>
+<td class="alt">0.02s-0.31s</td></tr><tr><td>StoreController#checkout.HTML</td>
+<td>6</td>
+<td>0.81s</td>
+<td>0.13s</td>
+<td>0.08s</td>
+<td>0.08s</td>
+<td>0.30s</td>
+<td>0.08s-0.30s</td></tr><tr><td class="alt">AdminController#login.HTML</td>
+<td class="alt">25</td>
+<td class="alt">0.71s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.14s</td>
+<td class="alt">0.01s-0.14s</td></tr><tr><td>ProductsController#edit.HTML</td>
+<td>7</td>
+<td>0.71s</td>
+<td>0.10s</td>
+<td>0.06s</td>
+<td>0.06s</td>
+<td>0.23s</td>
+<td>0.06s-0.24s</td></tr><tr><td class="alt">ProductsController#index.HTML</td>
+<td class="alt">15</td>
+<td class="alt">0.61s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.01s-0.09s</td></tr><tr><td>StoreController#add_to_cart.HTML</td>
+<td>18</td>
+<td>0.61s</td>
+<td>0.03s</td>
+<td>0.02s</td>
+<td>0.01s</td>
+<td>0.08s</td>
+<td>0.01s-0.08s</td></tr><tr><td class="alt">StoreController#save_order.HTML</td>
+<td class="alt">7</td>
+<td class="alt">0.50s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.17s</td>
+<td class="alt">0.02s-0.17s</td></tr><tr><td>ProductsController#show.HTML</td>
+<td>11</td>
+<td>0.43s</td>
+<td>0.04s</td>
+<td>0.01s</td>
+<td>0.02s</td>
+<td>0.06s</td>
+<td>0.02s-0.06s</td></tr><tr><td class="alt">ProductsController#create.HTML</td>
+<td class="alt">5</td>
+<td class="alt">0.21s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.03s-0.07s</td></tr><tr><td>ProductsController#update.HTML</td>
+<td>3</td>
+<td>0.17s</td>
+<td>0.06s</td>
+<td>0.03s</td>
+<td>0.04s</td>
+<td>0.08s</td>
+<td>0.04s-0.09s</td></tr><tr><td class="alt">UsersController#new.HTML</td>
+<td class="alt">2</td>
+<td class="alt">0.16s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.11s</td>
+<td class="alt">0.06s-0.11s</td></tr><tr><td>UsersController#index.HTML</td>
+<td>2</td>
+<td>0.07s</td>
+<td>0.03s</td>
+<td>0.01s</td>
+<td>0.03s</td>
+<td>0.04s</td>
+<td>0.03s-0.04s</td></tr><tr><td class="alt">UsersController#show.HTML</td>
+<td class="alt">1</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.03s-0.03s</td></tr><tr><td>Rails::InfoController#properties.</td>
+<td>4</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr></table><br/>
+<table cellspacing="0" id="mytable"><tr><th>View rendering time - by mean</th>
+<th>Hits</th>
+<th>Sum</th>
+<th>Mean</th>
+<th>StdDev</th>
+<th>Min</th>
+<th>Max</th>
+<th>95 %tile</th></tr><tr><td class="alt">StoreController#checkout.HTML</td>
+<td class="alt">6</td>
+<td class="alt">0.81s</td>
+<td class="alt">0.13s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.30s</td>
+<td class="alt">0.08s-0.30s</td></tr><tr><td>ProductsController#edit.HTML</td>
+<td>7</td>
+<td>0.71s</td>
+<td>0.10s</td>
+<td>0.06s</td>
+<td>0.06s</td>
+<td>0.23s</td>
+<td>0.06s-0.24s</td></tr><tr><td class="alt">ProductsController#new.HTML</td>
+<td class="alt">13</td>
+<td class="alt">1.13s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.31s</td>
+<td class="alt">0.02s-0.31s</td></tr><tr><td>UsersController#new.HTML</td>
+<td>2</td>
+<td>0.16s</td>
+<td>0.08s</td>
+<td>0.04s</td>
+<td>0.06s</td>
+<td>0.11s</td>
+<td>0.06s-0.11s</td></tr><tr><td class="alt">StoreController#save_order.HTML</td>
+<td class="alt">7</td>
+<td class="alt">0.50s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.17s</td>
+<td class="alt">0.02s-0.17s</td></tr><tr><td>StoreController#index.HTML</td>
+<td>204</td>
+<td>14.05s</td>
+<td>0.07s</td>
+<td>0.06s</td>
+<td>0.02s</td>
+<td>0.45s</td>
+<td>0.02s-0.24s</td></tr><tr><td class="alt">ProductsController#update.HTML</td>
+<td class="alt">3</td>
+<td class="alt">0.17s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.04s-0.09s</td></tr><tr><td>StoreController#add_to_cart.JS</td>
+<td>240</td>
+<td>12.38s</td>
+<td>0.05s</td>
+<td>0.04s</td>
+<td>0.02s</td>
+<td>0.44s</td>
+<td>0.02s-0.17s</td></tr><tr><td class="alt">ProductsController#create.HTML</td>
+<td class="alt">5</td>
+<td class="alt">0.21s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.03s-0.07s</td></tr><tr><td>ProductsController#index.HTML</td>
+<td>15</td>
+<td>0.61s</td>
+<td>0.04s</td>
+<td>0.02s</td>
+<td>0.01s</td>
+<td>0.09s</td>
+<td>0.01s-0.09s</td></tr><tr><td class="alt">ProductsController#show.HTML</td>
+<td class="alt">11</td>
+<td class="alt">0.43s</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.06s</td>
+<td class="alt">0.02s-0.06s</td></tr><tr><td>UsersController#index.HTML</td>
+<td>2</td>
+<td>0.07s</td>
+<td>0.03s</td>
+<td>0.01s</td>
+<td>0.03s</td>
+<td>0.04s</td>
+<td>0.03s-0.04s</td></tr><tr><td class="alt">StoreController#add_to_cart.HTML</td>
+<td class="alt">18</td>
+<td class="alt">0.61s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.01s-0.08s</td></tr><tr><td>UsersController#show.HTML</td>
+<td>1</td>
+<td>0.03s</td>
+<td>0.03s</td>
+<td>0.00s</td>
+<td>0.03s</td>
+<td>0.03s</td>
+<td>0.03s-0.03s</td></tr><tr><td class="alt">AdminController#login.HTML</td>
+<td class="alt">25</td>
+<td class="alt">0.71s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.14s</td>
+<td class="alt">0.01s-0.14s</td></tr><tr><td>Rails::InfoController#properties.</td>
+<td>4</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr></table><br/>
+<table cellspacing="0" id="mytable"><tr><th>Database time - by sum</th>
+<th>Hits</th>
+<th>Sum</th>
+<th>Mean</th>
+<th>StdDev</th>
+<th>Min</th>
+<th>Max</th>
+<th>95 %tile</th></tr><tr><td class="alt">StoreController#index.HTML</td>
+<td class="alt">204</td>
+<td class="alt">1.09s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.12s</td>
+<td class="alt">0.00s-0.03s</td></tr><tr><td>StoreController#add_to_cart.JS</td>
+<td>240</td>
+<td>1.04s</td>
+<td>0.00s</td>
+<td>0.02s</td>
+<td>0.00s</td>
+<td>0.22s</td>
+<td>0.00s-0.02s</td></tr><tr><td class="alt">ProductsController#show.HTML</td>
+<td class="alt">11</td>
+<td class="alt">0.59s</td>
+<td class="alt">0.05s</td>
+<td class="alt">0.08s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.27s</td>
+<td class="alt">0.00s-0.27s</td></tr><tr><td>AdminController#login.HTML</td>
+<td>25</td>
+<td>0.17s</td>
+<td>0.01s</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.03s</td>
+<td>0.00s-0.03s</td></tr><tr><td class="alt">UsersController#show.HTML</td>
+<td class="alt">1</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.10s-0.11s</td></tr><tr><td>StoreController#save_order.HTML</td>
+<td>7</td>
+<td>0.09s</td>
+<td>0.01s</td>
+<td>0.01s</td>
+<td>0.01s</td>
+<td>0.03s</td>
+<td>0.01s-0.03s</td></tr><tr><td class="alt">StoreController#add_to_cart.HTML</td>
+<td class="alt">18</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.00s-0.02s</td></tr><tr><td>ProductsController#create.HTML</td>
+<td>5</td>
+<td>0.05s</td>
+<td>0.01s</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.03s</td>
+<td>0.00s-0.03s</td></tr><tr><td class="alt">ProductsController#index.HTML</td>
+<td class="alt">15</td>
+<td class="alt">0.04s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s-0.01s</td></tr><tr><td>ProductsController#edit.HTML</td>
+<td>7</td>
+<td>0.03s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr><tr><td class="alt">ProductsController#update.HTML</td>
+<td class="alt">3</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s-0.01s</td></tr><tr><td>Rails::InfoController#properties.</td>
+<td>4</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr><tr><td class="alt">UsersController#index.HTML</td>
+<td class="alt">2</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s-0.01s</td></tr><tr><td>UsersController#new.HTML</td>
+<td>2</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s-0.00s</td></tr><tr><td class="alt">StoreController#checkout.HTML</td>
+<td class="alt">6</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s-0.00s</td></tr><tr><td>ProductsController#new.HTML</td>
+<td>13</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s-0.00s</td></tr></table><br/>
+<table cellspacing="0" id="mytable"><tr><th>Database time - by mean</th>
+<th>Hits</th>
+<th>Sum</th>
+<th>Mean</th>
+<th>StdDev</th>
+<th>Min</th>
+<th>Max</th>
+<th>95 %tile</th></tr><tr><td class="alt">UsersController#show.HTML</td>
+<td class="alt">1</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.10s</td>
+<td class="alt">0.10s-0.11s</td></tr><tr><td>ProductsController#show.HTML</td>
+<td>11</td>
+<td>0.59s</td>
+<td>0.05s</td>
+<td>0.08s</td>
+<td>0.00s</td>
+<td>0.27s</td>
+<td>0.00s-0.27s</td></tr><tr><td class="alt">StoreController#save_order.HTML</td>
+<td class="alt">7</td>
+<td class="alt">0.09s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.03s</td>
+<td class="alt">0.01s-0.03s</td></tr><tr><td>ProductsController#create.HTML</td>
+<td>5</td>
+<td>0.05s</td>
+<td>0.01s</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.03s</td>
+<td>0.00s-0.03s</td></tr><tr><td class="alt">ProductsController#update.HTML</td>
+<td class="alt">3</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s-0.01s</td></tr><tr><td>AdminController#login.HTML</td>
+<td>25</td>
+<td>0.17s</td>
+<td>0.01s</td>
+<td>0.01s</td>
+<td>0.00s</td>
+<td>0.03s</td>
+<td>0.00s-0.03s</td></tr><tr><td class="alt">StoreController#index.HTML</td>
+<td class="alt">204</td>
+<td class="alt">1.09s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.12s</td>
+<td class="alt">0.00s-0.03s</td></tr><tr><td>StoreController#add_to_cart.JS</td>
+<td>240</td>
+<td>1.04s</td>
+<td>0.00s</td>
+<td>0.02s</td>
+<td>0.00s</td>
+<td>0.22s</td>
+<td>0.00s-0.02s</td></tr><tr><td class="alt">StoreController#add_to_cart.HTML</td>
+<td class="alt">18</td>
+<td class="alt">0.07s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.02s</td>
+<td class="alt">0.00s-0.02s</td></tr><tr><td>ProductsController#edit.HTML</td>
+<td>7</td>
+<td>0.03s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr><tr><td class="alt">UsersController#index.HTML</td>
+<td class="alt">2</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s-0.01s</td></tr><tr><td>ProductsController#index.HTML</td>
+<td>15</td>
+<td>0.04s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.01s</td>
+<td>0.00s-0.01s</td></tr><tr><td class="alt">Rails::InfoController#properties.</td>
+<td class="alt">4</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.01s</td>
+<td class="alt">0.00s-0.01s</td></tr><tr><td>StoreController#checkout.HTML</td>
+<td>6</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s-0.00s</td></tr><tr><td class="alt">UsersController#new.HTML</td>
+<td class="alt">2</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s</td>
+<td class="alt">0.00s-0.00s</td></tr><tr><td>ProductsController#new.HTML</td>
+<td>13</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s</td>
+<td>0.00s-0.00s</td></tr></table><h2>Process blockers (> 1 sec duration)</h2>
+<table cellspacing="0" id="mytable"><tr><td class="alt">StoreController#index.HTML</td>
+<td class="alt">1 hits</td>
+<td class="alt">100.0%</td>
+<td class="alt"><div class='color_bar' style="width:200px;"/></td></tr></table><h2>Parse warnings</h2>
+Parsable lines were encountered without a header line before it. It<br/>
+could be that logging is not setup correctly for your application.<br/>
+Visit this website for logging configuration tips:<br/>
+<a href="http://github.com/wvanbergen/request-log-analyzer/wikis/configure-logging">http://github.com/wvanbergen/request-log-analyzer/wikis/configure-logging</a><br/>
+<br/>
+<hr /><h2>Thanks for using request-log-analyzer</h2><p>For more information please visit the <a href="http://github.com/wvanbergen/request-log-analyzer">Request-log-analyzer website</a></p><p>If you need an expert who can analyze your application, mail to <a href="mailto:contact@railsdoctors.com">contact@railsdoctors.com</a> or visit us at <a href="http://railsdoctors.com">http://railsdoctors.com</a>.</p></body></html>

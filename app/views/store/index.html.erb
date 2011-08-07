@@ -1,0 +1,19 @@
+<h1>Your Progmatic Catalog</h1>
+
+<% for product in @products -%>
+  <div class = "entry">
+    <%= image_tag(product.image_url) %>
+    <h3> <%=h product.title %> </h3>
+    <%= product.description %>
+    <div class="price-line">
+      <span class="price"><%= product.price %> </span>
+   
+      <%= form_for product, :url=> {:action => 'add_to_cart', :id => product }, :remote => true   do  %>
+        
+        <%= submit_tag I18n.t 'Button.add_to_cart' %>
+
+      <% end %>
+   
+    </div>
+  </div>
+<% end %>

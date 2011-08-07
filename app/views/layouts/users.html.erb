@@ -1,0 +1,47 @@
+<html>
+
+  <head>
+    <title> Todototry 's   Online Book  Store   </title> 
+    <%= stylesheet_link_tag "depot", :media => "all" %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  
+  <body id="store">
+    <div id="banner">
+      <%= image_tag("logo.png")%>
+      <%= @page_title || "Pragmatic Bookshelf"%>
+
+    </div>
+
+
+    <div id="columns">
+      
+
+      <div id="side">
+      
+        <a href="/">Home</a><br />
+        <a href="/faq">Question</a><br />
+        <a href="/news">News</a><br />
+        <a href="/contact">Contact</a><br />
+
+      </div>
+
+    <div id="main">
+      <% if flash[:notice] -%>
+   
+        <div id="notice"> 
+          
+         * <%= flash[:notice] %>
+       
+        </div>
+      <% end -%>
+      <%= yield %>
+    </div>
+  </div>
+
+  </body>
+
+
+
+</html>
+  
